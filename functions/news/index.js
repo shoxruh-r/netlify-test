@@ -2,6 +2,7 @@
 
 const express = require('express')
 const serverless = require('serverless-http')
+const fs = require('fs')
 
 
 const app = express()
@@ -9,8 +10,11 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 
-app.post('/', (req, res) => {
-    res.json({ success: true })
+app.get('/', (req, res) => {
+    fs.writeFile('test.txt', 'data', e => {
+        if (!e) res.json({ success: true })
+        else res.json({ success: false })
+    })
 })
 
 
