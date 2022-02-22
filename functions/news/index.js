@@ -10,7 +10,7 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 
-app.get('/', (req, res) => {
+app.get('/.netlify/functions/news', (req, res) => {
     fs.writeFile('test.txt', 'data', e => {
         if (!e) res.json({ success: true })
         else res.json({ success: false })
